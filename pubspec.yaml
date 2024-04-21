@@ -27,7 +27,7 @@ dependencies:
   http: ^0.13.3
   http_parser: ^4.0.0
   just_audio: ^0.9.36
-  flutter_sound: ^8.4.0
+  flutter_sound: ^9.4.6
 
   cupertino_icons: ^1.0.6
 
