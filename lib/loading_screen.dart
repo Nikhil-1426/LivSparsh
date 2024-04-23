@@ -1,23 +1,32 @@
 import 'package:flutter/material.dart';
+import 'signup_screen.dart'; // Import the sign-up screen
 
 class LoadingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    // Delayed navigation to the sign-up screen after 3 seconds
+    Future.delayed(Duration(seconds: 3), () {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => SignUpScreen()), // Navigate to the sign-up screen
+      );
+    });
+
     return Scaffold(
-      backgroundColor: Colors.white, // Change the background color as needed
+      backgroundColor: Colors.white,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(
-              'assets/Project Logo.jpg', // Replace 'assets/loading_image.png' with the path to your image asset
-              width: 200, // Adjust the width of the image as needed
-              height: 200, // Adjust the height of the image as needed
+              'assets/Project Logo.jpg',
+              width: 200,
+              height: 200,
             ),
-            SizedBox(height: 20), // Add some space between the image and the text
+            SizedBox(height: 20),
             Text(
-              'Loading...', // Display loading text
-              style: TextStyle(fontSize: 20), // Adjust the font size as needed
+              'Loading...',
+              style: TextStyle(fontSize: 20),
             ),
           ],
         ),
@@ -25,3 +34,4 @@ class LoadingScreen extends StatelessWidget {
     );
   }
 }
+
