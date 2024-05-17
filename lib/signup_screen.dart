@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/widgets.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'home_screen.dart';
 import 'signin_screen.dart';
@@ -62,9 +63,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 195, 248, 141),
+      backgroundColor: Color.fromARGB(255, 248, 249, 247),
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 178, 183, 176),
+        backgroundColor: Color.fromARGB(255, 232, 234, 231),
         automaticallyImplyLeading: false,
         title: Text(
           "Sign Up",
@@ -79,9 +80,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.asset(
-                  'assets/signup.png',
-                  height: 120,
+                Padding(
+                  padding: EdgeInsets.all(20),
+                  child: Image.asset(
+                    'assets/sign_in.png',
+                    height: 250,
+                    width: 250,
+                  ),
                 ),
                 SizedBox(height: 25),
                 buildTextField(
@@ -89,7 +94,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   prefixIcon: Icons.email,
                   controller: emailController,
                   validator: (value) {
-                    if (value == null || value.isEmpty || !value.contains('@')) {
+                    if (value == null ||
+                        value.isEmpty ||
+                        !value.contains('@')) {
                       return 'Please enter a valid email address';
                     }
                     return null;
@@ -139,7 +146,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                     Text(
                       "Remember me",
-                      style: TextStyle(color: Color.fromRGBO(2, 2, 2, 1), fontSize: 15),
+                      style: TextStyle(
+                          color: Color.fromRGBO(2, 2, 2, 1), fontSize: 15),
                     ),
                   ],
                 ),
@@ -147,14 +155,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   onPressed: () async {
                     if (_formKey.currentState!.validate()) {
                       try {
-                        UserCredential userCredential =
-                            await FirebaseAuth.instance.createUserWithEmailAndPassword(
+                        UserCredential userCredential = await FirebaseAuth
+                            .instance
+                            .createUserWithEmailAndPassword(
                           email: emailController.text,
                           password: passwordController.text,
                         );
 
                         // Save rememberMe status and user credentials
-                        SharedPreferences prefs = await SharedPreferences.getInstance();
+                        SharedPreferences prefs =
+                            await SharedPreferences.getInstance();
                         prefs.setBool('rememberMe', _rememberMe);
                         if (_rememberMe) {
                           prefs.setString('email', emailController.text);
@@ -182,7 +192,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     style: TextStyle(color: Colors.black, fontSize: 15),
                   ),
                   style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Color.fromARGB(255, 178, 183, 176)),
+                    backgroundColor: MaterialStateProperty.all(
+                        Color.fromARGB(221, 249, 250, 249)),
                   ),
                 ),
                 SizedBox(height: 20),
@@ -197,12 +208,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => SignInScreen()),
+                          MaterialPageRoute(
+                              builder: (context) => SignInScreen()),
                         );
                       },
                       child: Text(
                         "Sign In",
-                        style: TextStyle(fontSize: 18, color:Color.fromARGB(255, 126, 126, 126)),
+                        style: TextStyle(
+                            fontSize: 18,
+                            color: Color.fromARGB(255, 126, 126, 126)),
                       ),
                     ),
                   ],
@@ -241,5 +255,3 @@ class _SignUpScreenState extends State<SignUpScreen> {
     );
   }
 }
-
-
