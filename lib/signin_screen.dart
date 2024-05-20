@@ -18,10 +18,13 @@ class _SignInScreenState extends State<SignInScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 195, 248, 141),
+      backgroundColor: Color.fromARGB(255, 248, 249, 247),
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 178, 183, 176),
-        title: Text("Sign In", style: TextStyle(color: Colors.black, fontSize: 20),),
+        backgroundColor: Color.fromARGB(255, 232, 234, 231),
+        title: Text(
+          "Sign In",
+          style: TextStyle(color: Colors.black, fontSize: 20),
+        ),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -29,9 +32,13 @@ class _SignInScreenState extends State<SignInScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset(
-                'assets/signup.png',
-                height: 120,
+              Padding(
+                padding: EdgeInsets.all(20),
+                child: Image.asset(
+                  'assets/sign_in.png',
+                  height: 250,
+                  width: 250,
+                ),
               ),
               SizedBox(height: 20),
               _buildTextFieldWithBox(
@@ -67,8 +74,11 @@ class _SignInScreenState extends State<SignInScreen> {
                       });
                     },
                   ),
-                  Text("Remember me",
-                      style: TextStyle(color: Color.fromRGBO(2, 2, 2, 1), fontSize: 15),),
+                  Text(
+                    "Remember me",
+                    style: TextStyle(
+                        color: Color.fromRGBO(2, 2, 2, 1), fontSize: 15),
+                  ),
                 ],
               ),
               ElevatedButton(
@@ -82,7 +92,8 @@ class _SignInScreenState extends State<SignInScreen> {
 
                     if (_rememberMe) {
                       // If "Remember me" is checked, save the flag in SharedPreferences
-                      SharedPreferences prefs = await SharedPreferences.getInstance();
+                      SharedPreferences prefs =
+                          await SharedPreferences.getInstance();
                       prefs.setBool('remember_me', true);
                     }
 
@@ -100,11 +111,13 @@ class _SignInScreenState extends State<SignInScreen> {
                     );
                   }
                 },
-                child: Text("Sign In",
-                    style: TextStyle(color: Colors.black, fontSize: 15),),
+                child: Text(
+                  "Sign In",
+                  style: TextStyle(color: Colors.black, fontSize: 15),
+                ),
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(
-                      Color.fromARGB(255, 178, 183, 176)),
+                      Color.fromARGB(221, 249, 250, 249)),
                 ),
               ),
               SizedBox(height: 20),
@@ -124,7 +137,9 @@ class _SignInScreenState extends State<SignInScreen> {
                     },
                     child: Text(
                       "Sign Up",
-                      style: TextStyle(fontSize: 18, color: Color.fromARGB(255, 126, 126, 126)),
+                      style: TextStyle(
+                          fontSize: 18,
+                          color: Color.fromARGB(255, 126, 126, 126)),
                     ),
                   ),
                 ],
@@ -185,9 +200,3 @@ class _SignInScreenState extends State<SignInScreen> {
     }
   }
 }
-
-
-
-
-
-
