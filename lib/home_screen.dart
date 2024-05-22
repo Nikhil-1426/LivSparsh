@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:livsparsh/aboutus.dart';
-//import 'package:flutter/painting.dart';
-//import 'package:livsparsh/signin_screen.dart';
+//import 'package:flutter/painting.dart'; // This import is not required
+//import 'package:livsparsh/signin_screen.dart'; // Not used in this code
 import 'signup_screen.dart';
-<<<<<<< HEAD
 import 'speechinsighthub.dart'; // Import Speech Insight Hub
-=======
 import 'profile.dart';
->>>>>>> user2
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -28,13 +25,14 @@ class HomeScreen extends StatelessWidget {
           children: [
             const DrawerHeader(
               decoration: BoxDecoration(
-                  color: Color.fromARGB(246, 148, 240, 175),
-                  borderRadius: BorderRadius.all(Radius.circular(5))),
+                color: Color.fromARGB(246, 148, 240, 175),
+                borderRadius: BorderRadius.all(Radius.circular(5)),
+              ),
               child: UserAccountsDrawerHeader(
-                  accountName: Text("XYZ"),
-                  accountEmail: Text("XYZ@gmail.com")),
+                accountName: Text("XYZ"),
+                accountEmail: Text("XYZ@gmail.com"),
+              ),
             ),
-<<<<<<< HEAD
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
@@ -49,38 +47,35 @@ class HomeScreen extends StatelessWidget {
               child: Text('Speech Insight Hub'), // Button for Speech Insight Hub
             ),
             ElevatedButton(
-              onPressed: () {
-                // Navigate back to the sign-in screen
-=======
-            ListTile(
+              onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const Profile()),
+              ),
+              child: ListTile(
                 leading: Icon(Icons.person),
                 title: Text("My Profile"),
-                onTap: () => {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const Profile())),
-                    }),
-            ListTile(
+              ),
+            ),
+            ElevatedButton(
+              onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const AboutUs()),
+              ),
+              child: ListTile(
                 leading: Icon(Icons.info_rounded),
                 title: Text("About Us"),
-                onTap: () => {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const AboutUs())),
-                    }),
-            ListTile(
-              leading: Icon(Icons.logout_rounded),
-              title: Text("logout"),
-              onTap: () => {
->>>>>>> user2
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => SignUpScreen()),
-                ),
-              },
-            )
+              ),
+            ),
+            ElevatedButton(
+              onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => SignUpScreen()),
+              ),
+              child: ListTile(
+                leading: Icon(Icons.logout_rounded),
+                title: Text("Logout"),
+              ),
+            ),
           ],
         ),
       ),
